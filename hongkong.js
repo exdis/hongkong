@@ -75,12 +75,14 @@ $(document).ready(function() {
 
         for (i = 0; i < $scrollTop.length; i++) {
             factor = $scrollTop[i].factor;
-            $scrollTop.eq(i).css('transform', 'translateY(' + parseInt(scroll / factor, 10) + 'px)');
+            $scrollTop.eq(i).css('transform', 'translateY(' +
+                parseInt(scroll / factor, 10) + 'px)');
         }
 
         for (i = 0; i < $scrollBottom.length; i++) {
             factor = $scrollBottom[i].factor;
-            $scrollBottom.eq(i).css('transform', 'translateY(' + parseInt(scroll / (factor * -1), 10) + 'px)');
+            $scrollBottom.eq(i).css('transform', 'translateY(' +
+                parseInt(scroll / (factor * -1), 10) + 'px)');
         }
 
         window.cancelAnimationFrame(_callback);
@@ -90,6 +92,8 @@ $(document).ready(function() {
      * Init
      */
      _generateFactor();
+
+     $('body').css('height', 0);
 
     $(window).on('scroll', function () {
         _throttle(window.requestAnimationFrame(_callback), 100, false);
